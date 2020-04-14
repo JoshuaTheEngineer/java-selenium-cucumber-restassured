@@ -40,15 +40,15 @@ However, I'll be using real JSON data from [PokeAPI](https://pokeapi.co/docs/v2.
 3. To check if it's running correctly, add a sample feature file (I used this [one](https://cucumber.io/docs/guides/10-minute-tutorial/#verify-cucumber-installation)). Then, run the Feature file.
 It should show similar results below
 
-> Scenario: Sunday isn't Friday        # src/test/java/features/is_it_friday_yet.feature:4
+Scenario: Sunday isn't Friday        # src/test/java/features/is_it_friday_yet.feature:4
   Given today is Sunday              # null
   When I ask whether it's Friday yet # null
   Then I should be told "Nope"       # null
 
-> Undefined scenarios:
+Undefined scenarios:
 file:///Users/macpro/eclipse-workspace/java-selenium-cucumber-restassured/src/test/java/features/is_it_friday_yet.feature:4# Sunday isn't Friday
 
-> 1 Scenarios (1 undefined)
+1 Scenarios (1 undefined)
 3 Steps (3 undefined)
 0m0.129s
 
