@@ -25,6 +25,8 @@ However, I'll be using real JSON data from [PokeAPI](https://pokeapi.co/docs/v2.
 
 ## Step 1: Initial Setup and Dependencies
 
+Visit tag ***v1.0.0-cucumberSetup***
+
 1. Create a Maven project
 
 2. Add the below dependencies into your pom.xml file. You can find them in the [Maven repository](https://mvnrepository.com/artifact/io.cucumber).
@@ -54,6 +56,8 @@ It should show similar results below
 
 ## Step 2: Add Selenium Webdriver
 
+Visit tag ***v2.0.0-seleniumScripting***
+
 0. Remove the App.java and AppTest.java files if you haven't already.
 
 1. Add Selenium-Java dependency. See *pom.xml*
@@ -65,6 +69,14 @@ It should show similar results below
 - Great articles about [Cucumber hooks](https://zsoltfabok.com/blog/2012/09/cucumber-jvm-hooks/) and [Practical usage of Before and After](http://www.automationtestinghub.com/cucumber-hooks-before-after/)
 
 4. Try running ChromeDriver. If you face Chrome compatibility issues, download the right one [here](https://chromedriver.storage.googleapis.com/index.html)
+
+## Step 3: Implement Page Object Model with Page Factory
+
+1. Create a BrowserFactory file that will give it flexibility for choosing WebDrivers. See the factory files under ***util*** directory.
+
+2. Create a Page Object file. See the files under **pages** directory. 
+
+3. Implement step definitions based off Page Object file. See the files under ***step_definitions*** directory.
 
 ## Helpful Resources for building a Webdriver-Cucumber-RESTAssured Test Framework
 
