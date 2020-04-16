@@ -19,27 +19,18 @@ public class SearchPOF {
 	final WebDriver driver;
 	final WebDriverWait wait;
 	
-	/*
-	 * Constructs driver
-	 */
 	public SearchPOF(String driverName, int waitTime) {
 		this.driver = BrowserFactory.startBrowser(driverName);
 		this.wait = new WebDriverWait(driver, 10);
 		PageFactory.initElements(this.driver, this);
 	}
 	
-	/*
-	 * FindBy searches for WebElements
-	 * how = the type of selector
-	 * using = attribute name
-	 */
 	@FindBy(how=How.ID,using="searchInput")
 	WebElement searchInput;
 	
 	@FindBy(how=How.ID,using="search")
 	WebElement searchBtn;
 	
-	// FindAll is used to find all webelements based off FindBy
 	@FindAll(@FindBy(how=How.CSS,using=".results .animating"))
 	List<WebElement> pokedexResults; 
 	

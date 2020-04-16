@@ -7,10 +7,6 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 
-/*
- * Used to determine Browser. 
- * So far, this project will focus on Chrome
- */
 public class BrowserFactory {
 	static WebDriver driver;
 	public static WebDriver startBrowser(String browserName) {

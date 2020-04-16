@@ -13,16 +13,6 @@ import junit.framework.Assert;
 import pages.SearchPOF;
 
 
-/*
- * Implemented POM factory methods via Page Factory methods
- * 
- * also reordered steps to be 
- * Before
- * Given
- * When
- * Then
- * After
- */
 public class PokedexSearchSteps {
 	
 	SearchPOF sPOF;
