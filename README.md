@@ -5,7 +5,7 @@ This was done on MacOS. And I'll post a YouTube tutorial eventually. So, if you 
 
 Will be testing the [Pokemon website](https://www.pokemon.com/us/) but the API Testing will be done with [JSON Server](https://github.com/typicode/json-server).
 
-However, I'll be using real JSON data from [PokeAPI](https://pokeapi.co/docs/v2.html/#types). *Note, please be polite when using it because as of April 14 2020, it fixed limit of100 API requests per IP address per minute*
+However, I'll be using real JSON data from [PokeAPI](https://pokeapi.co/docs/v2.html/#types). *Note, please be polite when using it because as of April 14 2020, it fixed limit of 100 API requests per IP address per minute*
 
 ## Step 0: Setup Tools
 
@@ -40,17 +40,31 @@ However, I'll be using real JSON data from [PokeAPI](https://pokeapi.co/docs/v2.
 3. To check if it's running correctly, add a sample feature file (I used this [one](https://cucumber.io/docs/guides/10-minute-tutorial/#verify-cucumber-installation)). Then, run the Feature file.
 It should show similar results below
 
-Scenario: Sunday isn't Friday        # src/test/java/features/is_it_friday_yet.feature:4
+> Scenario: Sunday isn't Friday        # src/test/java/features/is_it_friday_yet.feature:4
   Given today is Sunday              # null
   When I ask whether it's Friday yet # null
   Then I should be told "Nope"       # null
 
-Undefined scenarios:
-file:///Users/macpro/eclipse-workspace/java-selenium-cucumber-restassured/src/test/java/features/is_it_friday_yet.feature:4# Sunday isn't Friday
+> Undefined scenarios:
+> file:///Users/macpro/eclipse-workspace/java-selenium-cucumber-restassured/src/test/java/features/is_it_friday_yet.feature:4# Sunday isn't Friday
 
-1 Scenarios (1 undefined)
-3 Steps (3 undefined)
-0m0.129s
+> 1 Scenarios (1 undefined)
+> 3 Steps (3 undefined)
+> 0m0.129s
+
+## Step 2: Add Selenium Webdriver
+
+0. Remove the App.java and AppTest.java files if you haven't already.
+
+1. Add Selenium-Java dependency. See *pom.xml*
+
+2. Write a few scenarios for your feature. See *pokedex_search.feature* 
+
+3. Write step definitions and the test runner. See *PokedexSearchSteps.java*
+
+- Great articles about [Cucumber hooks](https://zsoltfabok.com/blog/2012/09/cucumber-jvm-hooks/) and [Practical usage of Before and After](http://www.automationtestinghub.com/cucumber-hooks-before-after/)
+
+4. Try running ChromeDriver. If you face Chrome compatibility issues, download the right one [here](https://chromedriver.storage.googleapis.com/index.html)
 
 ## Helpful Resources for building a Webdriver-Cucumber-RESTAssured Test Framework
 
