@@ -15,6 +15,10 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import util.BrowserFactory;
 
 public class SearchPOF {
+
+	// Scenario Outline - https://www.baeldung.com/cucumber-scenario-outline
+	// https://cucumber.netlify.app/docs/gherkin/reference/
+	// Adding Tags
 	
 	final WebDriver driver;
 	final WebDriverWait wait;
@@ -31,6 +35,15 @@ public class SearchPOF {
 	@FindBy(how=How.ID,using="search")
 	WebElement searchBtn;
 	
+	@FindBy(how=How.LINK_TEXT,using="Log In")
+	WebElement logInLink;
+	
+	@FindBy(how=How.LINK_TEXT,using="Sign Up")
+	WebElement signUpLink;
+	
+	@FindBy(how=How.ID,using="cookie-dismisser")
+	WebElement dismissCookieBtn;
+	
 	@FindAll(@FindBy(how=How.CSS,using=".results .animating"))
 	List<WebElement> pokedexResults; 
 	
@@ -43,9 +56,6 @@ public class SearchPOF {
 	/*
 	 * Shortcut methods
 	 */
-	private By byResults() {
-		return By.cssSelector(".results .animating");
-	}
 	
 	public void go_to_url(String url) {
 		this.driver.get(url);
@@ -75,10 +85,27 @@ public class SearchPOF {
 		return pokedexResultNames;
 	}
 	
+	public void wait_for_signup_link() {
+		wait.until(ExpectedConditions.presenceOfElementLocated(By.linkText("Sign Up")));
+	}
+	
+	public void wait_for_login_link() {
+		wait.until(ExpectedConditions.presenceOfElementLocated(By.linkText("Log In")));
+	}
+	
 	public void wait_for_results(int targetNum) {
 		wait.until(ExpectedConditions.numberOfElementsToBe(
-			byResults(), 
+			By.cssSelector(".results .animating"), 
 			targetNum));
+	}
+	
+	public void dismiss_cookies() {
+		try {
+			wait.until(ExpectedConditions.presenceOfElementLocated(By.id("cookie-dismisser")));
+			dismissCookieBtn.click();
+		} catch(Exception e) {
+			System.out.println("Error with cookies: " + e.getMessage());
+		}
 	}
 	
 	public void end_session() {

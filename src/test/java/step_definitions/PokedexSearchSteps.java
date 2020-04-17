@@ -23,18 +23,38 @@ public class PokedexSearchSteps {
 		System.out.println("------------------------------");
 	}
 	
+	/*
+	 * Created Background Steps 
+	 * 
+	 * https://www.toolsqa.com/cucumber/background-in-cucumber/
+	 */
 	@Given("we're in the Pokedex page")
 	public void we_re_in_the_Pokedex_page() {
 		sPOF.go_to_url("https://www.pokemon.com/us/pokedex/");
 	}
+	
+	@Given("we dismissed the cookies")
+	public void we_dismissed_the_cookies() {
+		sPOF.dismiss_cookies();
+	}
+	
+	@When("the Log In link is available")
+	public void the_Log_In_link_is_available() {
+	    sPOF.wait_for_login_link();
+	}
 
-	@When("you type nothing in the Search bar")
-	public void you_type_nothing_in_the_Search_bar() {
+	@When("the Sign Up link is available")
+	public void the_Sign_Up_link_is_available() {
+	    sPOF.wait_for_signup_link();
+	}
+
+	@Given("you typed nothing in the Search bar")
+	public void you_typed_nothing_in_the_Search_bar() {
 		sPOF.clear_text();
 	}
 	
-	@When("you type Bulbasaur in the Search bar")
-	public void you_type_Bulbasaur_in_the_Search_bar() {
+	@Given("you typed Bulbasaur in the Search bar")
+	public void you_typed_Bulbasaur_in_the_Search_bar() {
 		sPOF.type_search_query("Bulbasaur");
 	}
 

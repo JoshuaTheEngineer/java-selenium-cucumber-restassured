@@ -72,11 +72,19 @@ Visit tag ***v2.0.0-seleniumScripting***
 
 ## Step 3: Implement Page Object Model with Page Factory
 
+Visit tag ***v3.0.0-PageObjectFactory***
+
 1. Create a BrowserFactory file that will give it flexibility for choosing WebDrivers. See the factory files under ***util*** directory.
 
 2. Create a Page Object file. See the files under **pages** directory. 
 
 3. Implement step definitions based off Page Object file. See the files under ***step_definitions*** directory.
+
+## Step 4: Added more Cucumber hooks
+
+1. Added Background in feature file. See [reference](https://www.toolsqa.com/cucumber/background-in-cucumber/)
+
+2. 
 
 ## Helpful Resources for building a Webdriver-Cucumber-RESTAssured Test Framework
 
