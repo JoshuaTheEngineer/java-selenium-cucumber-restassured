@@ -86,6 +86,8 @@ Visit tag ***v3.0.0-PageObjectFactory***
 
 2. Implemented the [Scenario Outline with Examples](https://cucumber.netlify.app/docs/gherkin/reference/). Had to remove duplicate methods. See files under **features** and **step_definitions**
 
+3. I added [tags](https://cucumber.netlify.app/docs/cucumber/api/#tags) so we can reference which tests to run. See files under **features** directory. And how to call them with testrunner under **runners** directory
+
 ## Helpful Resources for building a Webdriver-Cucumber-RESTAssured Test Framework
 
 1. [Cucumber Anti-patterns](http://www.thinkcode.se/blog/2016/06/22/cucumber-antipatterns)
