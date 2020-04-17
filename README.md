@@ -88,6 +88,36 @@ Visit tag ***v3.0.0-PageObjectFactory***
 
 3. I added [tags](https://cucumber.netlify.app/docs/cucumber/api/#tags) so we can reference which tests to run. See files under **features** directory. And how to call them with testrunner under **runners** directory
 
+## Step 5: Setting up JSON data
+
+1. Extract JSON data with your API call and save it as ***kanto.json*** in the **src/test/java/resources** directory. 
+	- https://pokeapi.co/api/v2/region/1/
+		- I had to modify my json to get it to work.
+			- I removed most data except those under keys
+				- locations
+				- version_groups
+			- I had to ID each of them due to constraints of 'json-server'. So, I trimmed down the JSON file 
+	- WARNING #1: You may get a ".json is not supported" issue. To resolve this issue, wrap your json data under the key "data". See mine as an example or read this [StackOverflow thread](https://stackoverflow.com/questions/46195599/type-of-id-number-in-user-json-is-not-supported-use-objects-or-arrays-of-ob)
+	- WARNING #2: JSON Server [doesn't support Nested data](https://stackoverflow.com/questions/56582634/not-able-to-get-object-key-data-in-json-server) 
+	
+	
+2. With the NPM Server (that I installed in *Step 0*), I started it pointing to the file above. 
+
+> json-server --watch kanto.json
+
+3. To test if it works, in a browser, type and enter
+
+>  http://localhost:3000/locations
+>  http://localhost:3000/version_groups
+
+## Step 6: REST Assured
+
+1. To make running API Tests quicker, annotate the tags in your TestRunner to be '@{insert_name}' and tag your feature file the same. 
+
+	- In my example, see my **TestRunner.java** and **KantoAPI.feature** files. I tagged them with @kanto
+2. 
+
+
 ## Helpful Resources for building a Webdriver-Cucumber-RESTAssured Test Framework
 
 1. [Cucumber Anti-patterns](http://www.thinkcode.se/blog/2016/06/22/cucumber-antipatterns)

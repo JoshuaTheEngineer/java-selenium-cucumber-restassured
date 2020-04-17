@@ -11,13 +11,6 @@ import junit.framework.Assert;
 import pages.SearchPOF;
 
 
-/*
- * I modified my feature files so they are flexible 
- * to use the values from the Scenario Outline
- * 
- * https://cucumber.netlify.app/docs/gherkin/reference/
- * https://www.baeldung.com/cucumber-scenario-outline
- */
 public class PokedexSearchSteps {
 	
 	SearchPOF sPOF;
@@ -28,11 +21,6 @@ public class PokedexSearchSteps {
 		System.out.println("------------------------------");
 	}
 	
-	/*
-	 * Created Background Steps 
-	 * 
-	 * https://www.toolsqa.com/cucumber/background-in-cucumber/
-	 */
 	@Given("we're in the Pokedex page")
 	public void we_re_in_the_Pokedex_page() {
 		sPOF.go_to_url("https://www.pokemon.com/us/pokedex/");
@@ -53,7 +41,6 @@ public class PokedexSearchSteps {
 	    sPOF.wait_for_signup_link();
 	}
 
-	// replaced duplicate methods
 	@Given("you typed {string} in the Search bar")
 	public void you_typed_in_the_Search_bar(String str) {
 	    if (str.isEmpty()) sPOF.clear_text();

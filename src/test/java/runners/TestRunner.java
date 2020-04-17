@@ -10,6 +10,6 @@ import io.cucumber.junit.CucumberOptions;
 @CucumberOptions(
 		features="features",
 		glue={"step_definitions"},
-		tags= "@slow", // runs only feature tags marked '@slow'
+		tags= "@kanto",
 		plugin= {"pretty","html:test-output"})
 public class TestRunner { }

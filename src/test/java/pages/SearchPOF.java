@@ -17,9 +17,6 @@ import util.BrowserFactory;
 
 public class SearchPOF {
 
-	
-	// Adding Tags
-	
 	final WebDriver driver;
 	final WebDriverWait wait;
 	
