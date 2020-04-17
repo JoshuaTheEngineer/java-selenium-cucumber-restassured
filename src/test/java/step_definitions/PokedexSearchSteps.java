@@ -2,8 +2,6 @@ package step_definitions;
 
 import java.util.List;
 
-import org.openqa.selenium.WebElement;
-
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.en.Given;
@@ -13,6 +11,13 @@ import junit.framework.Assert;
 import pages.SearchPOF;
 
 
+/*
+ * I modified my feature files so they are flexible 
+ * to use the values from the Scenario Outline
+ * 
+ * https://cucumber.netlify.app/docs/gherkin/reference/
+ * https://www.baeldung.com/cucumber-scenario-outline
+ */
 public class PokedexSearchSteps {
 	
 	SearchPOF sPOF;
@@ -48,38 +53,39 @@ public class PokedexSearchSteps {
 	    sPOF.wait_for_signup_link();
 	}
 
-	@Given("you typed nothing in the Search bar")
-	public void you_typed_nothing_in_the_Search_bar() {
-		sPOF.clear_text();
-	}
-	
-	@Given("you typed Bulbasaur in the Search bar")
-	public void you_typed_Bulbasaur_in_the_Search_bar() {
-		sPOF.type_search_query("Bulbasaur");
+	// replaced duplicate methods
+	@Given("you typed {string} in the Search bar")
+	public void you_typed_in_the_Search_bar(String str) {
+	    if (str.isEmpty()) sPOF.clear_text();
+	    else sPOF.type_search_query(str);
 	}
 
 	@When("you click the Search button")
 	public void you_click_the_Search_button() {
 		sPOF.click_search_btn();
 	}
-
-	@Then("the Search Results SHOULD return the first {int} Pokemon based on their Pokedex IDs")
-	public void the_Search_Results_SHOULD_return_the_first_Pokemon_based_on_their_Pokedex_IDs(int expectedNum) { 
-	    sPOF.wait_for_results(expectedNum);
-		List<WebElement> searchResults = sPOF.get_all_pokedex_results();
-	    List<WebElement> searchIDs = sPOF.get_all_pokedex_ids();
-	    String[] expectedIDs = { "001","002","003","004","005","006","007","008","009","010","011","012"};
-	    Assert.assertEquals(expectedNum, searchResults.size());
-	    for(int i=0; i<12; i++) {
-	    	Assert.assertTrue("The ID SHOULD be "+expectedIDs[i], searchIDs.get(i).getText().contains(expectedIDs[i]));
+	
+	@Then("the Search Results SHOULD return {int} Pokemon")
+	public void the_Search_Results_SHOULD_return_Pokemon(Integer targetNum) {
+	    sPOF.wait_for_results(targetNum);
+	    Assert.assertEquals("There SHOULD be "+targetNum+" results.", targetNum.intValue(), sPOF.get_all_pokedex_results().size());
+	}
+	
+	@Then("SHOULD ascend starting from {int}")
+	public void should_ascend_starting_from(Integer id) {
+	    List<Integer> list = sPOF.get_all_pokedex_ids();
+	    for(Integer pokedexId : list) {
+	    	Assert.assertEquals(pokedexId, id);
+	    	id++;
 	    }
 	}
-
-	@Then("the Search Results SHOULD return only Bulbasaur")
-	public void the_Search_Results_SHOULD_return_only_Bulbasaur() {
-		sPOF.wait_for_results(1);
-		List<WebElement> names = sPOF.get_all_pokedex_names(); 
-		Assert.assertEquals("Bulbsaur SHOULD be the only Search Result", "Bulbasaur", names.get(0).getText());
+	
+	@Then("they SHOULD have {string} in their name")
+	public void they_SHOULD_have_in_their_name(String text) {
+	    List<String> list = sPOF.get_all_pokedex_names();
+	    for(String name : list) {
+	    	Assert.assertTrue(name + " SHOULD have " + text + " in its name.", name.contains(text));
+	    }
 	}
 	
 	@After

@@ -1,5 +1,6 @@
 package pages;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.openqa.selenium.By;
@@ -16,8 +17,7 @@ import util.BrowserFactory;
 
 public class SearchPOF {
 
-	// Scenario Outline - https://www.baeldung.com/cucumber-scenario-outline
-	// https://cucumber.netlify.app/docs/gherkin/reference/
+	
 	// Adding Tags
 	
 	final WebDriver driver;
@@ -77,12 +77,21 @@ public class SearchPOF {
 		return pokedexResults;
 	}
 	
-	public List<WebElement> get_all_pokedex_ids() {
-		return pokedexResultIds;
+	public List<Integer> get_all_pokedex_ids() {
+		List list = new ArrayList<Integer>();
+		for(WebElement elem : pokedexResultIds) {
+			System.out.println("Element Text: " + elem.getText());
+			list.add(Integer.valueOf(elem.getText().substring(1)));
+		}
+		return list;
 	}
 	
-	public List<WebElement> get_all_pokedex_names() {
-		return pokedexResultNames;
+	public List<String> get_all_pokedex_names() {
+		List list = new ArrayList<String>();
+		for(WebElement elem : pokedexResultNames) {
+			list.add(elem.getText());
+		}
+		return list;
 	}
 	
 	public void wait_for_signup_link() {

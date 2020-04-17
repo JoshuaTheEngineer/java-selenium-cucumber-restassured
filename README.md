@@ -84,7 +84,7 @@ Visit tag ***v3.0.0-PageObjectFactory***
 
 1. Added Background in feature file. See [reference](https://www.toolsqa.com/cucumber/background-in-cucumber/)
 
-2. 
+2. Implemented the [Scenario Outline with Examples](https://cucumber.netlify.app/docs/gherkin/reference/). Had to remove duplicate methods. See files under **features** and **step_definitions**
 
 ## Helpful Resources for building a Webdriver-Cucumber-RESTAssured Test Framework
 
