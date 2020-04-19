@@ -110,15 +110,28 @@ Visit tag ***v3.0.0-PageObjectFactory***
 >  http://localhost:3000/locations
 >  http://localhost:3000/version_groups
 
-## Step 6: REST Assured
+## Step 6: REST Assured (GET calls with Path and Query Params)
 
-1. To make running API Tests quicker, annotate the tags in your TestRunner to be '@{insert_name}' and tag your feature file the same. 
+1. Install the latest version (that works) of [REST Assured](https://github.com/rest-assured/rest-assured/wiki/GettingStarted#documentation) via inserting the dependency into the **pom.xml** file 
+
+2. To make running API Tests quicker, annotate the tags in your TestRunner to be '@{insert_name}' and tag your feature file the same. 
 
 	- In my example, see my **TestRunner.java** and **KantoAPI.feature** files. I tagged them with @kanto
-2. 
+3. When you run your test runner, you can add the generated methods to a step definition file
 
+4. Create Feature files based off your API. See mine as an example under the **features** directory.
+
+5. You'll need the below imports in the step definition file
+
+> import static io.restassured.RestAssured.given;
+import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.CoreMatchers.hasItems;
+import io.restassured.http.ContentType;
+
+5. Since the REST Assured methods have their own BDD format, you may implement some of Feature files' Given-When-Then statements while others might be left blank. Use REST Assured's GET [Query](https://github.com/rest-assured/rest-assured/wiki/Usage#parameters) + [Path](https://github.com/rest-assured/rest-assured/wiki/Usage#path-parameters) calls if needed
 
 ## Helpful Resources for building a Webdriver-Cucumber-RESTAssured Test Framework
 
 1. [Cucumber Anti-patterns](http://www.thinkcode.se/blog/2016/06/22/cucumber-antipatterns)
 2. [9 Tips for Improving Cucumber test readability](https://www.foreach.be/blog/9-tips-improving-cucumber-test-readability)
+3. [API Testing with REST-assured and Cucumber](https://www.youtube.com/playlist?list=PL6tu16kXT9PpgqfMbMdzUzDenYgb0gbk0)
